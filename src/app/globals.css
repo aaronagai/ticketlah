@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+:root {
+  --background: #faf9f7;
+  --foreground: #1a1a2e;
+  --malaysia-red: #cc0001;
+  --malaysia-blue: #010066;
+  --malaysia-yellow: #ffcc00;
+  --malaysia-gold: #c4a035;
+  --surface: #ffffff;
+  --muted: #6b7280;
+  --border: #e8e4df;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-malaysia-red: var(--malaysia-red);
+  --color-malaysia-blue: var(--malaysia-blue);
+  --color-malaysia-yellow: var(--malaysia-yellow);
+  --color-malaysia-gold: var(--malaysia-gold);
+  --color-surface: var(--surface);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --font-sans: var(--font-outfit);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+.batik-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23cc0001' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.jalur-stripes {
+  background: linear-gradient(
+    180deg,
+    #cc0001 0%,
+    #cc0001 14%,
+    #ffffff 14%,
+    #ffffff 28%,
+    #010066 28%,
+    #010066 42%,
+    #ffffff 42%,
+    #ffffff 56%,
+    #cc0001 56%,
+    #cc0001 70%,
+    #ffffff 70%,
+    #ffffff 84%,
+    #010066 84%,
+    #010066 100%
+  );
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.field-input {
+  width: 100%;
+  border-radius: 0.75rem;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  padding: 0.625rem 1rem;
+  font-size: 0.875rem;
+  color: var(--foreground);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.field-input::placeholder {
+  color: color-mix(in srgb, var(--muted) 60%, transparent);
+}
+
+.field-input:focus {
+  outline: none;
+  border-color: color-mix(in srgb, var(--malaysia-red) 40%, transparent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--malaysia-red) 15%, transparent);
+}
