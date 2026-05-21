@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
-import { Outfit } from "next/font/google";
+import { Inter } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import "./globals.css";
 
-const outfit = Outfit({
-  variable: "--font-outfit",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
   title: "TicketLah — Discover Events in Malaysia",
   description:
-    "Malaysia's homegrown event platform. Find tech meetups, food fests, hikes, and more — book your spot lah!",
+    "Discover and host events across Malaysia. Book your spot lah!",
 };
 
 export default function RootLayout({
@@ -22,8 +22,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${outfit.variable} h-full scroll-smooth`}>
-      <body className="min-h-full flex flex-col antialiased batik-pattern">
+    <html lang="en" className={`${inter.variable} h-full`}>
+      <body className="min-h-full flex flex-col antialiased bg-background">
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

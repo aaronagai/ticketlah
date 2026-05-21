@@ -1,62 +1,50 @@
 import Link from "next/link";
-import { categories, cities } from "@/lib/events";
+import { categories, nearbyOptions } from "@/lib/events";
 
 export const metadata = {
   title: "Create Event — TicketLah",
-  description: "Host your event on TicketLah. From meetups to food fests — set up in minutes lah!",
+  description: "Host your event on TicketLah.",
 };
 
 export default function CreateEventPage() {
   return (
-    <div className="mx-auto max-w-2xl px-4 sm:px-6 py-12 pb-20">
+    <div className="mx-auto max-w-lg px-4 py-6 pb-16">
       <Link
         href="/"
-        className="inline-flex items-center gap-1 text-sm font-medium text-muted hover:text-malaysia-red mb-6"
+        className="inline-flex items-center gap-1 text-[13px] font-medium text-muted hover:text-foreground mb-6"
       >
-        ← Back to home
+        ← Back
       </Link>
 
-      <div className="mb-8">
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-foreground">
-          Create your event{" "}
-          <span className="text-malaysia-red">lah</span>
-        </h1>
-        <p className="mt-2 text-muted">
-          Tech talk, food fest, hiking trip — set up your event page in minutes.
-          Accept payments via FPX and e-wallets.
-        </p>
-      </div>
+      <h1 className="text-xl font-semibold text-foreground mb-1">
+        Create Event
+      </h1>
+      <p className="text-[14px] text-muted mb-8">
+        Set up your event page in minutes.
+      </p>
 
-      <form className="space-y-6">
+      <form className="space-y-5">
         <Field label="Event name" required>
           <input
             type="text"
-            placeholder="e.g. KL Startup Meetup: Pitch & Makan"
+            placeholder="e.g. KL Startup Meetup"
             className="field-input"
           />
         </Field>
 
-        <Field label="Short description" required>
-          <input
-            type="text"
-            placeholder="One-liner that hooks people — confirm attendance lah!"
-            className="field-input"
-          />
-        </Field>
-
-        <Field label="Full description">
+        <Field label="Description">
           <textarea
-            rows={4}
-            placeholder="Tell attendees what to expect, what's included, dress code, etc."
+            rows={3}
+            placeholder="What's this event about?"
             className="field-input resize-none"
           />
         </Field>
 
-        <div className="grid gap-6 sm:grid-cols-2">
+        <div className="grid grid-cols-2 gap-4">
           <Field label="Date" required>
             <input type="date" className="field-input" />
           </Field>
-          <Field label="Time (MYT)" required>
+          <Field label="Time" required>
             <input type="time" className="field-input" />
           </Field>
         </div>
@@ -69,90 +57,58 @@ export default function CreateEventPage() {
           />
         </Field>
 
-        <div className="grid gap-6 sm:grid-cols-2">
+        <div className="grid grid-cols-2 gap-4">
           <Field label="City" required>
             <select className="field-input" defaultValue="">
               <option value="" disabled>
-                Select city
+                Select
               </option>
-              {cities.slice(1).map((city) => (
+              {nearbyOptions.slice(1).map((city) => (
                 <option key={city} value={city}>
                   {city}
                 </option>
               ))}
             </select>
           </Field>
-          <Field label="Category" required>
+          <Field label="Category">
             <select className="field-input" defaultValue="">
               <option value="" disabled>
-                Select category
+                Select
               </option>
               {categories.map((cat) => (
                 <option key={cat.id} value={cat.id}>
-                  {cat.emoji} {cat.label}
+                  {cat.label}
                 </option>
               ))}
             </select>
           </Field>
         </div>
 
-        <div className="grid gap-6 sm:grid-cols-2">
-          <Field label="Ticket price (RM)">
+        <div className="grid grid-cols-2 gap-4">
+          <Field label="Price (RM)">
             <input
               type="number"
               min="0"
-              placeholder="0 for free events"
+              placeholder="0 = free"
               className="field-input"
             />
           </Field>
-          <Field label="Max capacity">
+          <Field label="Capacity">
             <input
               type="number"
               min="1"
-              placeholder="e.g. 100"
+              placeholder="100"
               className="field-input"
             />
           </Field>
-        </div>
-
-        <Field label="Cover emoji">
-          <div className="flex flex-wrap gap-2">
-            {["🚀", "🍜", "🎸", "⛰️", "🎭", "☕", "🏃", "🥭", "💻", "🎉"].map(
-              (emoji) => (
-                <button
-                  key={emoji}
-                  type="button"
-                  className="flex h-12 w-12 items-center justify-center rounded-xl border border-border bg-surface text-2xl hover:border-malaysia-red hover:bg-malaysia-red/5 transition-all"
-                >
-                  {emoji}
-                </button>
-              )
-            )}
-          </div>
-        </Field>
-
-        <div className="rounded-xl border border-malaysia-yellow/30 bg-malaysia-yellow/5 p-4">
-          <p className="text-sm font-semibold text-foreground mb-1">
-            💳 Payment methods
-          </p>
-          <p className="text-xs text-muted">
-            TicketLah supports FPX online banking, Touch &apos;n Go eWallet, GrabPay,
-            Boost, and major credit/debit cards. Payouts to your Malaysian bank account
-            within 3 business days.
-          </p>
         </div>
 
         <button
           type="submit"
-          className="w-full rounded-full bg-malaysia-red py-4 text-sm font-bold text-white shadow-lg shadow-malaysia-red/25 hover:bg-red-700 transition-all hover:scale-[1.01]"
+          className="w-full rounded-lg bg-foreground py-3 text-[14px] font-semibold text-background hover:bg-foreground/90 transition-colors mt-2"
         >
-          Publish Event Lah! 🚀
+          Publish Event
         </button>
-
-        <p className="text-center text-xs text-muted">
-          By publishing, you agree to TicketLah&apos;s Terms of Service. Free to create — we
-          charge 3.5% + RM1 per paid ticket.
-        </p>
       </form>
     </div>
   );
@@ -169,9 +125,9 @@ function Field({
 }) {
   return (
     <div>
-      <label className="block text-sm font-semibold text-foreground mb-1.5">
+      <label className="block text-[13px] font-medium text-foreground mb-1.5">
         {label}
-        {required && <span className="text-malaysia-red ml-0.5">*</span>}
+        {required && <span className="text-muted-light ml-0.5">*</span>}
       </label>
       {children}
     </div>
