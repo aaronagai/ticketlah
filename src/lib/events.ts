@@ -50,15 +50,15 @@ export const nearbyOptions = [
 
 export const events: Event[] = [
   {
-    slug: "bitcoin-pizza-day-kl",
-    title: "Bitcoin Pizza Day — Kuala Lumpur!",
-    subtitle: "Celebrate the legendary pizza transaction with the MY crypto community",
+    slug: "timogah-open-day",
+    title: "Timogah Open Day!",
+    subtitle: "Come explore Nagai Pangan — tours, tastings, and good company",
     description:
-      "Join Malaysia's crypto community for Bitcoin Pizza Day at Pizza Mansion. Free pizza slices for the first 50 attendees, lightning talks on Bitcoin in Malaysia, and networking with builders from KL's Web3 scene.",
-    category: "tech",
+      "Timogah welcomes everyone to Nagai Pangan for an open day. Walk through the space, meet the team, sample what's cooking, and connect with neighbours and friends. Free entry — just bring your appetite lah.",
+    category: "food",
     date: "2026-05-22",
     time: "6:00 PM",
-    venue: "Pizza Mansion @ The Five",
+    venue: "Nagai Pangan",
     city: "Kuala Lumpur",
     state: "Wilayah Persekutuan",
     price: 0,
@@ -66,11 +66,11 @@ export const events: Event[] = [
     spotsLeft: 34,
     totalSpots: 80,
     soldOut: false,
-    organizer: "Renaiss TCG",
-    organizerAvatar: "RT",
+    organizer: "Timogah",
+    organizerAvatar: "TG",
     coverColor: "#f97316",
-    emoji: "🍕",
-    tags: ["Crypto", "Networking", "Free"],
+    emoji: "🎉",
+    tags: ["Open Day", "Community", "Free"],
   },
   {
     slug: "apubcc-hackathon-demo",
