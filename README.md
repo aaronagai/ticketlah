@@ -1,6 +1,10 @@
 # TicketLah
 
+[![Live Demo](https://img.shields.io/badge/demo-live-brightgreen)](https://aaronagai.github.io/ticketlah/)
+
 Malaysia's homegrown event platform — discover and host events across the country.
+
+**Live site:** [https://aaronagai.github.io/ticketlah/](https://aaronagai.github.io/ticketlah/)
 
 ## Getting Started
 
