@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ForkKnife, Calendar, Tag, MapPoint, Sparkles, Search } from "reicon-react";
 import { HypePin } from "@/components/HypePin";
@@ -8,10 +9,10 @@ import { TextReveal } from "@/components/TextReveal";
 import { iconProps } from "@/components/ui/Icon";
 
 const categories = [
-  { label: "Food", icon: ForkKnife, color: "#f97316" },
-  { label: "Events", icon: Calendar, color: "#7c3aed", href: "#events" },
-  { label: "Promotions", icon: Tag, color: "#10b981" },
-  { label: "Things to Do", icon: MapPoint, color: "#3b82f6" },
+  { label: "Food", icon: ForkKnife, color: "#f97316", href: "/food" },
+  { label: "Events", icon: Calendar, color: "#7c3aed", href: "/#events" },
+  { label: "Promotions", icon: Tag, color: "#10b981", href: "/promotions" },
+  { label: "Things to Do", icon: MapPoint, color: "#3b82f6", href: "/things-to-do" },
 ];
 
 export function Hero() {
@@ -75,14 +76,14 @@ export function Hero() {
 
         <div className="mt-7 flex flex-wrap items-center justify-center gap-2">
           {categories.map(({ label, icon: Icon, color, href }) => (
-            <a
+            <Link
               key={label}
-              href={href ?? "#"}
+              href={href}
               className="t-surface inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-3.5 py-2 text-[12.5px] font-medium text-foreground hover:border-border/60 hover:-translate-y-0.5"
             >
               <Icon {...iconProps({ size: 14, color })} />
               {label}
-            </a>
+            </Link>
           ))}
         </div>
 

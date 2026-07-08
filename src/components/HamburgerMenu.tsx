@@ -79,13 +79,13 @@ export function HamburgerMenu() {
             </Link>
           ))}
           <div className="my-1 h-px bg-border-light" />
-          <Link
-            href="#"
+          <button
+            type="button"
             onClick={close}
-            className="t-surface block px-4 py-2 text-[13px] font-medium text-muted hover:bg-border-light/60"
+            className="t-surface block w-full px-4 py-2 text-left text-[13px] font-medium text-muted hover:bg-border-light/60"
           >
             For Businesses
-          </Link>
+          </button>
           {isLoggedIn ? (
             <button
               type="button"
