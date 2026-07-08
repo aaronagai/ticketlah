@@ -1,0 +1,36 @@
+type Props = {
+  className?: string;
+  variant?: "gradient" | "mono";
+  title?: string;
+};
+
+export function Logo({
+  className = "",
+  variant = "gradient",
+  title = "LokalHype",
+}: Props) {
+  const fill = variant === "gradient" ? "url(#hype-logo-gradient)" : "currentColor";
+
+  return (
+    <svg
+      viewBox="0 0 983.8 585.83"
+      className={className}
+      role="img"
+      aria-label={title}
+      fill={fill}
+    >
+      {variant === "gradient" && (
+        <defs>
+          <linearGradient id="hype-logo-gradient" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stopColor="#7c3aed" />
+            <stop offset="55%" stopColor="#ec4899" />
+            <stop offset="100%" stopColor="#f59e0b" />
+          </linearGradient>
+        </defs>
+      )}
+      <path d="M334.4,272.82l-279.16.02,24.77-139.95,437.62.04c25.3-53.31,69.28-95.68,124.38-118.04,22.81-9.25,45.81-13.58,70.56-14.85l271.23-.04-24.8,140.48-437.49-.11c-34.49,72.66-105.09,126.04-187.1,132.46Z" />
+      <path d="M27.64,429.67l24.61-140.17,124.82-.12,312.4.2,7.49-13.97c34.94-65.16,106.74-114.8,182.11-118.81l277.14-.06-24.74,140.1-437.53-.02c-25.43,53.91-70.29,96.26-125.48,118.36-22.71,9.09-45.38,13.21-69.92,14.45l-270.9.04Z" />
+      <path d="M277.32,585.81l-277.32.02,24.73-139.97,437.56.03c35.82-76.18,112.08-131.51,197.79-132.91h268.52s-24.59,139.98-24.59,139.98l-437.58-.05c-34.41,73.55-106.73,127.42-189.12,132.89Z" />
+    </svg>
+  );
+}

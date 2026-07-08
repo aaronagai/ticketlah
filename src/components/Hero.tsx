@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { ForkKnife, Calendar, Tag, MapPoint, Sparkles, Search } from "reicon-react";
-import { HypePin } from "@/components/HypePin";
+import { Logo } from "@/components/Logo";
 import { TextReveal } from "@/components/TextReveal";
 import { iconProps } from "@/components/ui/Icon";
 
@@ -33,7 +33,7 @@ export function Hero() {
 
       <div className="relative mx-auto max-w-lg flex flex-col items-center text-center">
         <div className="mb-5 t-surface hover:scale-105">
-          <HypePin size={56} />
+          <Logo className="h-14 w-auto" />
         </div>
 
         <TextReveal as="div" className="mb-3">

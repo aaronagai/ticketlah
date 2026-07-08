@@ -4,6 +4,7 @@ import Link from "next/link";
 import { HamburgerMenu } from "@/components/HamburgerMenu";
 import { UserMenu } from "@/components/UserMenu";
 import { PrototypeBadge } from "@/components/PrototypeBadge";
+import { Logo } from "@/components/Logo";
 import { useSession } from "@/lib/session";
 
 export function Header() {
@@ -13,10 +14,13 @@ export function Header() {
     <header className="sticky top-0 z-40 bg-background/90 backdrop-blur-sm border-b border-border-light">
       <div className="mx-auto flex h-14 max-w-lg items-center justify-between px-4">
         <div className="flex items-center gap-2">
-          <Link href="/" className="t-surface text-[17px] font-extrabold tracking-tight">
-            <span className="text-foreground">Lokal</span>
-            <span className="hype-text-gradient">Hype</span>
-            <span className="text-muted-light font-semibold">.com</span>
+          <Link href="/" className="t-surface flex items-center gap-2">
+            <Logo className="h-5 w-auto" />
+            <span className="text-[17px] font-extrabold tracking-tight">
+              <span className="text-foreground">Lokal</span>
+              <span className="hype-text-gradient">Hype</span>
+              <span className="text-muted-light font-semibold">.com</span>
+            </span>
           </Link>
           <PrototypeBadge className="hidden sm:inline-flex" />
         </div>
