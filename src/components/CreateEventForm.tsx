@@ -73,8 +73,8 @@ export function CreateEventForm() {
           })
         : "7:00 PM",
       venue: venue.trim() || "TBA",
-      city: city || "Kuala Lumpur",
-      state: "Wilayah Persekutuan",
+      city: city || "Kuching",
+      state: "Sarawak",
       price: priceNum,
       isFree: priceNum === 0,
       spotsLeft: cap,
@@ -137,7 +137,7 @@ export function CreateEventForm() {
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          placeholder="e.g. KL Startup Meetup"
+          placeholder="e.g. Kuching Tech Meetup"
           className="field-input"
           required
         />
@@ -177,7 +177,7 @@ export function CreateEventForm() {
           type="text"
           value={venue}
           onChange={(e) => setVenue(e.target.value)}
-          placeholder="e.g. Ruang Co-working, Bangsar"
+          placeholder="e.g. Borneo744, Padungan"
           className="field-input"
         />
       </Field>

@@ -54,7 +54,7 @@ export function Hero() {
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Ask anything... e.g. char kuey teow, hackathon, coffee promo"
+              placeholder="Ask anything... e.g. Sarawak laksa, kolo mee, Rainforest Festival"
               className="min-w-0 flex-1 bg-transparent text-[13px] text-foreground placeholder:text-muted-light focus:outline-none py-1.5"
             />
             <button

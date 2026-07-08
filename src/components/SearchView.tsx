@@ -55,7 +55,7 @@ export function SearchView() {
 
       {!initial ? (
         <p className="text-[13px] text-muted py-8 text-center">
-          Try searching for &ldquo;char kuey teow&rdquo;, &ldquo;hackathon&rdquo;, or &ldquo;coffee promo&rdquo;.
+          Try searching for &ldquo;Sarawak laksa&rdquo;, &ldquo;orangutan&rdquo;, or &ldquo;jazz&rdquo;.
         </p>
       ) : results.total === 0 ? (
         <div className="py-10 text-center">

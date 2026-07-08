@@ -1,7 +1,7 @@
 # LokalHype.com — Prototype & Roadmap
 
 **LokalHype.com** is an all-in-one platform to discover local places, events,
-promotions, and experiences in Malaysia.
+promotions, and experiences — starting with Sarawak.
 
 This repository is an **interactive prototype** built to demonstrate the product
 vision and the intended user experience. It is intentionally frontend-only:
