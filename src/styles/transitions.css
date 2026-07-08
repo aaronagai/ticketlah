@@ -207,6 +207,27 @@
   }
 }
 
+/* 06 — Modal open / close */
+.t-modal-backdrop {
+  opacity: 0;
+  transition: opacity var(--duration-fast) var(--ease-smooth-out);
+}
+.t-modal-backdrop.is-open {
+  opacity: 1;
+}
+.t-modal-panel {
+  opacity: 0;
+  transform: scale(0.96) translateY(8px);
+  transition:
+    opacity var(--duration-fast) var(--ease-smooth-out),
+    transform var(--duration-fast) var(--ease-smooth-out);
+  will-change: transform, opacity;
+}
+.t-modal-backdrop.is-open .t-modal-panel {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
 /* Interactive surfaces — Family fluidity on common taps */
 .t-surface {
   transition:

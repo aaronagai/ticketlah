@@ -27,6 +27,7 @@ export type Event = {
   coverColor: string;
   emoji: string;
   tags: string[];
+  isUserCreated?: boolean;
 };
 
 export const categories: { id: EventCategory; label: string }[] = [

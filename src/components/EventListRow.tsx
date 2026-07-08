@@ -15,11 +15,8 @@ function SoldOutBadge() {
 }
 
 export function EventListRow({ event }: { event: Event }) {
-  return (
-    <Link
-      href={`/events/${event.slug}`}
-      className="flex gap-3 group t-surface rounded-lg -mx-2 px-2 py-1 hover:bg-border-light/60"
-    >
+  const inner = (
+    <>
       <div
         className="shrink-0 w-[72px] h-[72px] sm:w-20 sm:h-20 rounded-lg overflow-hidden flex items-center justify-center text-3xl transition-transform duration-[var(--duration-fast)] ease-[var(--ease-smooth-out)] group-hover:scale-[1.02]"
         style={{ backgroundColor: event.coverColor + "18" }}
@@ -37,7 +34,14 @@ export function EventListRow({ event }: { event: Event }) {
               {event.organizer}
             </span>
           </div>
-          {event.soldOut && <SoldOutBadge />}
+          {event.isUserCreated ? (
+            <span className="inline-flex items-center gap-1 text-[11px] font-medium text-hype-green shrink-0">
+              <span className="h-1.5 w-1.5 rounded-full bg-hype-green" />
+              Live
+            </span>
+          ) : (
+            event.soldOut && <SoldOutBadge />
+          )}
         </div>
 
         <h4 className="text-[14px] font-semibold text-foreground leading-snug mb-1.5 group-hover:underline decoration-foreground/30 underline-offset-2">
@@ -54,6 +58,19 @@ export function EventListRow({ event }: { event: Event }) {
           <span className="text-[12px] text-muted truncate">{event.venue}</span>
         </div>
       </div>
+    </>
+  );
+
+  const className =
+    "flex gap-3 group t-surface rounded-lg -mx-2 px-2 py-1 hover:bg-border-light/60";
+
+  if (event.isUserCreated) {
+    return <div className={className}>{inner}</div>;
+  }
+
+  return (
+    <Link href={`/events/${event.slug}`} className={className}>
+      {inner}
     </Link>
   );
 }

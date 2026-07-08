@@ -4,14 +4,18 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Menu } from "reicon-react";
 import { iconProps } from "@/components/ui/Icon";
+import { useSession } from "@/lib/session";
 
-const links = [
-  { label: "Discover", href: "/#events" },
+const navLinks = [
+  { label: "Food", href: "/food" },
+  { label: "Events", href: "/#events" },
+  { label: "Promotions", href: "/promotions" },
+  { label: "Things to Do", href: "/things-to-do" },
   { label: "Create Event", href: "/create" },
-  { label: "Log in", href: "#" },
 ];
 
 export function HamburgerMenu() {
+  const { isLoggedIn, openAuth, logout } = useSession();
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -43,10 +47,7 @@ export function HamburgerMenu() {
           "--dropdown-close-dur"
         )
       ) || 150;
-    setTimeout(() => {
-      dropdown.classList.remove("is-closing");
-      setOpen(false);
-    }, closeMs);
+    setTimeout(() => setOpen(false), closeMs);
   }
 
   return (
@@ -65,9 +66,9 @@ export function HamburgerMenu() {
         <div
           ref={dropdownRef}
           data-origin="top-right"
-          className="t-dropdown absolute right-0 top-full z-30 mt-2 min-w-[160px] rounded-xl border border-border bg-background py-1.5 shadow-lg"
+          className="t-dropdown absolute right-0 top-full z-30 mt-2 min-w-[180px] rounded-xl border border-border bg-background py-1.5 shadow-lg"
         >
-          {links.map((link) => (
+          {navLinks.map((link) => (
             <Link
               key={link.label}
               href={link.href}
@@ -77,6 +78,37 @@ export function HamburgerMenu() {
               {link.label}
             </Link>
           ))}
+          <div className="my-1 h-px bg-border-light" />
+          <Link
+            href="#"
+            onClick={close}
+            className="t-surface block px-4 py-2 text-[13px] font-medium text-muted hover:bg-border-light/60"
+          >
+            For Businesses
+          </Link>
+          {isLoggedIn ? (
+            <button
+              type="button"
+              onClick={() => {
+                logout();
+                close();
+              }}
+              className="t-surface block w-full px-4 py-2 text-left text-[13px] font-medium text-sold-out hover:bg-border-light/60"
+            >
+              Log out
+            </button>
+          ) : (
+            <button
+              type="button"
+              onClick={() => {
+                openAuth();
+                close();
+              }}
+              className="t-surface block w-full px-4 py-2 text-left text-[13px] font-medium text-foreground hover:bg-border-light/60"
+            >
+              Log in
+            </button>
+          )}
         </div>
       )}
     </div>

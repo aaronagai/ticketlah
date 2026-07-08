@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { BackLink } from "@/components/BackLink";
 import { SoldOutLabel } from "@/components/SoldOutLabel";
+import { RegisterButton } from "@/components/RegisterButton";
 import {
   getEventBySlug,
   formatEventDate,
@@ -80,17 +81,11 @@ export default async function EventPage({ params }: Props) {
         </p>
       </div>
 
-      <button
-        type="button"
-        disabled={event.soldOut}
-        className={`t-surface w-full rounded-lg py-3 text-[14px] font-semibold ${
-          event.soldOut
-            ? "bg-border-light text-muted-light cursor-not-allowed"
-            : "bg-foreground text-background hover:bg-foreground/90"
-        }`}
-      >
-        {event.soldOut ? "Sold Out" : "Register"}
-      </button>
+      <RegisterButton
+        slug={event.slug}
+        soldOut={event.soldOut}
+        isFree={event.isFree}
+      />
     </div>
   );
 }

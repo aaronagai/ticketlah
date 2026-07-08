@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { ForkKnife, Calendar, Tag, MapPoint, Sparkles, Search } from "reicon-react";
 import { HypePin } from "@/components/HypePin";
 import { TextReveal } from "@/components/TextReveal";
@@ -13,6 +15,15 @@ const categories = [
 ];
 
 export function Hero() {
+  const router = useRouter();
+  const [query, setQuery] = useState("");
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    const q = query.trim();
+    if (q) router.push(`/search?q=${encodeURIComponent(q)}`);
+  }
+
   return (
     <section className="relative overflow-hidden px-4 pt-14 pb-10 sm:pt-20 sm:pb-16">
       <div className="hype-blob h-72 w-72 -left-16 top-10 bg-orange-300/40" />
@@ -35,15 +46,14 @@ export function Hero() {
           </p>
         </TextReveal>
 
-        <form
-          onSubmit={(e) => e.preventDefault()}
-          className="mt-7 w-full"
-        >
+        <form onSubmit={handleSubmit} className="mt-7 w-full">
           <div className="t-surface flex items-center gap-2 rounded-full border border-border bg-background pl-4 pr-1.5 py-1.5 shadow-[0_8px_24px_rgba(124,58,237,0.08)] focus-within:border-hype-purple/40 focus-within:shadow-[0_8px_28px_rgba(124,58,237,0.14)]">
             <Sparkles {...iconProps({ size: 16, className: "text-hype-purple shrink-0" })} />
             <input
               type="text"
-              placeholder="Ask anything... e.g. best food near me, events this weekend, cafe with wifi"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Ask anything... e.g. char kuey teow, hackathon, coffee promo"
               className="min-w-0 flex-1 bg-transparent text-[13px] text-foreground placeholder:text-muted-light focus:outline-none py-1.5"
             />
             <button
