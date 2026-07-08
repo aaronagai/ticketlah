@@ -1,31 +1,14 @@
+"use client";
+
+import { Clock, MapPoint, TicketExpired2 } from "reicon-react";
 import Link from "next/link";
 import type { Event } from "@/lib/events";
-
-function ClockIcon() {
-  return (
-    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-muted-light shrink-0">
-      <circle cx="12" cy="12" r="10" />
-      <path d="M12 6v6l4 2" />
-    </svg>
-  );
-}
-
-function PinIcon() {
-  return (
-    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-muted-light shrink-0">
-      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-      <circle cx="12" cy="10" r="3" />
-    </svg>
-  );
-}
+import { iconProps } from "@/components/ui/Icon";
 
 function SoldOutBadge() {
   return (
     <span className="inline-flex items-center gap-1 text-[11px] font-medium text-sold-out shrink-0">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M2 9a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v2a2 2 0 0 0 0 4v2a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3v-2a2 2 0 0 0 0-4V9z" />
-        <path d="M9 6v12" />
-      </svg>
+      <TicketExpired2 {...iconProps({ size: 12, color: "currentColor" })} />
       Sold Out
     </span>
   );
@@ -35,10 +18,10 @@ export function EventListRow({ event }: { event: Event }) {
   return (
     <Link
       href={`/events/${event.slug}`}
-      className="flex gap-3 group"
+      className="flex gap-3 group t-surface rounded-lg -mx-2 px-2 py-1 hover:bg-border-light/60"
     >
       <div
-        className="shrink-0 w-[72px] h-[72px] sm:w-20 sm:h-20 rounded-lg overflow-hidden flex items-center justify-center text-3xl"
+        className="shrink-0 w-[72px] h-[72px] sm:w-20 sm:h-20 rounded-lg overflow-hidden flex items-center justify-center text-3xl transition-transform duration-[var(--duration-fast)] ease-[var(--ease-smooth-out)] group-hover:scale-[1.02]"
         style={{ backgroundColor: event.coverColor + "18" }}
       >
         <span className="select-none">{event.emoji}</span>
@@ -62,15 +45,33 @@ export function EventListRow({ event }: { event: Event }) {
         </h4>
 
         <div className="flex items-center gap-1.5 mb-0.5">
-          <ClockIcon />
+          <Clock {...iconProps({ size: 13, className: "text-muted-light shrink-0" })} />
           <span className="text-[12px] text-muted">{event.time}</span>
         </div>
 
         <div className="flex items-center gap-1.5">
-          <PinIcon />
+          <MapPoint {...iconProps({ size: 13, className: "text-muted-light shrink-0" })} />
           <span className="text-[12px] text-muted truncate">{event.venue}</span>
         </div>
       </div>
     </Link>
+  );
+}
+
+export function EventListSkeleton() {
+  return (
+    <div className="space-y-4" aria-hidden>
+      {[0, 1, 2].map((i) => (
+        <div key={i} className="flex gap-3">
+          <div className="skel-thumb" />
+          <div className="flex-1 space-y-2 pt-1">
+            <div className="skel-bar w-20" />
+            <div className="skel-bar w-full" />
+            <div className="skel-bar w-24" />
+            <div className="skel-bar w-32" />
+          </div>
+        </div>
+      ))}
+    </div>
   );
 }

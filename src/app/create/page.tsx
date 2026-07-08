@@ -1,20 +1,16 @@
 import Link from "next/link";
+import { BackLink } from "@/components/BackLink";
 import { categories, nearbyOptions } from "@/lib/events";
 
 export const metadata = {
-  title: "Create Event — TicketLah",
-  description: "Host your event on TicketLah.",
+  title: "Create Event — LokalHype.com",
+  description: "Host your event on LokalHype.",
 };
 
 export default function CreateEventPage() {
   return (
     <div className="mx-auto max-w-lg px-4 py-6 pb-16">
-      <Link
-        href="/"
-        className="inline-flex items-center gap-1 text-[13px] font-medium text-muted hover:text-foreground mb-6"
-      >
-        ← Back
-      </Link>
+      <BackLink href="/" className="mb-6" />
 
       <h1 className="text-xl font-semibold text-foreground mb-1">
         Create Event
@@ -105,7 +101,7 @@ export default function CreateEventPage() {
 
         <button
           type="submit"
-          className="w-full rounded-lg bg-foreground py-3 text-[14px] font-semibold text-background hover:bg-foreground/90 transition-colors mt-2"
+          className="t-surface w-full rounded-lg bg-foreground py-3 text-[14px] font-semibold text-background hover:bg-foreground/90 mt-2"
         >
           Publish Event
         </button>

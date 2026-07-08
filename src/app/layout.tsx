@@ -11,9 +11,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "TicketLah — Discover Events in Malaysia",
+  title: "LokalHype.com — Discover Local",
   description:
-    "Discover and host events across Malaysia. Book your spot lah!",
+    "An all-in-one platform to discover places, events, promotions and local experiences.",
 };
 
 export default function RootLayout({

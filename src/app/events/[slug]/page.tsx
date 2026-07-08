@@ -1,5 +1,6 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
+import { BackLink } from "@/components/BackLink";
+import { SoldOutLabel } from "@/components/SoldOutLabel";
 import {
   getEventBySlug,
   formatEventDate,
@@ -18,9 +19,9 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
   const event = getEventBySlug(slug);
-  if (!event) return { title: "Event Not Found — TicketLah" };
+  if (!event) return { title: "Event Not Found — LokalHype.com" };
   return {
-    title: `${event.title} — TicketLah`,
+    title: `${event.title} — LokalHype.com`,
     description: event.subtitle,
   };
 }
@@ -32,15 +33,10 @@ export default async function EventPage({ params }: Props) {
 
   return (
     <div className="mx-auto max-w-lg px-4 py-6 pb-16">
-      <Link
-        href="/"
-        className="inline-flex items-center gap-1 text-[13px] font-medium text-muted hover:text-foreground mb-6"
-      >
-        ← Back
-      </Link>
+      <BackLink href="/" className="mb-6" />
 
       <div
-        className="w-full aspect-[16/9] rounded-xl overflow-hidden flex items-center justify-center text-6xl mb-6"
+        className="w-full aspect-[16/9] rounded-xl overflow-hidden flex items-center justify-center text-6xl mb-6 transition-transform duration-[var(--duration-fast)]"
         style={{ backgroundColor: event.coverColor + "18" }}
       >
         {event.emoji}
@@ -51,11 +47,7 @@ export default async function EventPage({ params }: Props) {
           {event.organizerAvatar}
         </span>
         <span className="text-[13px] text-muted">{event.organizer}</span>
-        {event.soldOut && (
-          <span className="ml-auto text-[12px] font-medium text-sold-out">
-            Sold Out
-          </span>
-        )}
+        {event.soldOut && <SoldOutLabel className="ml-auto" />}
       </div>
 
       <h1 className="text-xl font-semibold text-foreground leading-snug mb-2">
@@ -91,7 +83,7 @@ export default async function EventPage({ params }: Props) {
       <button
         type="button"
         disabled={event.soldOut}
-        className={`w-full rounded-lg py-3 text-[14px] font-semibold transition-colors ${
+        className={`t-surface w-full rounded-lg py-3 text-[14px] font-semibold ${
           event.soldOut
             ? "bg-border-light text-muted-light cursor-not-allowed"
             : "bg-foreground text-background hover:bg-foreground/90"
